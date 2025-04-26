@@ -236,7 +236,7 @@ enum class MealType {
 class Meal{
     private:
         int mealId;
-        string name;
+        string mealName;
         float price;
         MealType type;
     public:
@@ -245,20 +245,20 @@ class Meal{
 
     void setmealId(int);
     int getmealId() const;
-    void setName(string) const;
-    string getName() const;
+    void setmealName(const string&) ;
+    string getmealName() const;
 
 };
 //Constructor
 Meal::Meal(){
     mealId = 0;
-    name = "";
+    mealName = "";
     price = 0.0;
     type = MealType::Breakfast;
 }
 Meal::Meal(int id, string n, float p, MealType t){
     mealId = id;
-    name = n;
+    mealName = n;
     price = p;
     type = t;
 }
@@ -271,6 +271,12 @@ void Meal::setmealId(int id){
 }
 int Meal::getmealId() const{
     return mealId;
+}
+void Meal::setmealName(const string& n) {
+    mealName = n;
+}
+string Meal::getmealName() const{
+    return mealName;
 }
 int main() {
  
