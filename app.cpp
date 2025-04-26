@@ -337,9 +337,22 @@ class DiningHall{
         string address;
         int capicity;
     public:
+    DiningHall();
+    DiningHall(int, string, string, int);
 
 };
-
+DiningHall::DiningHall(){
+    hallId = 0;
+    name = "";
+    address = "";
+    capicity = 0;
+}
+DiningHall::DiningHall(int hid, string hn, string ad, int cp){
+    hallId = hid;
+    name = hn;
+    address = ad;
+    capicity = cp;
+}
 
 int main() {
  
