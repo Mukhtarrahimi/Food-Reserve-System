@@ -238,7 +238,7 @@ class Meal{
         int mealId;
         string mealName;
         float price;
-        MealType type;
+        MealType meal_type;
     public:
     Meal();
     Meal(int, string, float, MealType);
@@ -249,6 +249,8 @@ class Meal{
     string getmealName() const;
     void setPrice(float);
     float getPrice() const;
+    void setmealType(MealType);
+    MealType getmealType();
 
 };
 //Constructor
@@ -256,13 +258,13 @@ Meal::Meal(){
     mealId = 0;
     mealName = "";
     price = 0.0;
-    type = MealType::Breakfast;
+    meal_type = MealType::Breakfast;
 }
 Meal::Meal(int id, string n, float p, MealType t){
     mealId = id;
     mealName = n;
     price = p;
-    type = t;
+    meal_type = t;
 }
 // Setter & Getter
 void Meal::setmealId(int id){
@@ -285,6 +287,12 @@ void Meal::setPrice(float p){
 }
 float Meal::getPrice() const{
     return price;
+}
+void Meal::setmealType(MealType mt){
+    meal_type = mt;
+}
+MealType Meal::getmealType(){
+    return meal_type;
 }
 int main() {
  
