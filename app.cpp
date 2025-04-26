@@ -341,6 +341,8 @@ class DiningHall{
         DiningHall(int, string, string, int);
         void sethallId(int);
         int gethallId() const;
+        void sethallName(const string&);
+        string gethallName()const;
 
 };
 DiningHall::DiningHall(){
@@ -361,6 +363,12 @@ void DiningHall::sethallId(int id){
 }
 int DiningHall::gethallId() const{
     return hallId;
+}
+void DiningHall::sethallName(const string& n){
+    name = n;
+}
+string DiningHall::gethallName() const{
+    return name;
 }
 
 int main() {
