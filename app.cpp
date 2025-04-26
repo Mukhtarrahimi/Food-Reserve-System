@@ -58,10 +58,10 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
 }
 // setters & getters
 void Student::setUserId(int u) {
-    if (u <= 0)
-        cout << "invalid user id!" << endl;
-    else
+    if (u > 0)
         userId = u;
+    else
+        cout << "Invalid user id!" << endl;
 }
 int Student::getUserId() const {
     return userId;
@@ -95,7 +95,7 @@ void Student::setBalance(float b) {
     if (b >= 0 && b <= 10000)
         balance = b;
     else
-        cout << "low balance!" << endl;
+        cout << "Low balance!" << endl;
 }
 float Student::getBalance() const {
     return balance;
@@ -115,7 +115,7 @@ void Student::print() const {
          << "Is Active: " << boolalpha << isActive << endl;
 }
 
-// ------------- Student Class Section -------------
+// ------------- Reservation Class Section -------------
 
 enum class ReservationStatus { ACTIVE, CANCELLED };
 
@@ -147,8 +147,6 @@ public:
 
     void print() const;
     bool cancel();
-
-
 };
 
 // constructor
@@ -170,7 +168,7 @@ void Reservation::setReservationId(int id) {
     if(id > 0)
         reservationId = id; 
     else
-        cout << "eror! invalid id." << endl;
+        cout << "Error! invalid id." << endl;
 }
 int Reservation::getReservationId() const {
     return reservationId; 
@@ -210,7 +208,7 @@ void Reservation::print() const {
     std::cout << "Reservation id: " << reservationId << endl;
     std::cout << "Student name: " << student.getName() << endl;
     std::cout << "Dining hall: " << dHall.getName() << endl;
-    std::cout << "meal: " << meal.getName() << endl;
+    std::cout << "Meal: " << meal.getName() << endl;
     if (status == ReservationStatus::ACTIVE) {
     std::cout << "status: active" << std::endl;
     } else {
@@ -221,13 +219,27 @@ void Reservation::print() const {
 
 bool Reservation::cancel() {
     if (status == ReservationStatus::CANCELLED) {
-        cout << "reservation is already cancelled." << endl;
+        cout << "Reservation is already cancelled." << endl;
         return false;
     }
     status = ReservationStatus::CANCELLED;
-    cout << "reservation cancelled successfully." << endl;
+    cout << "Reservation cancelled successfully." << endl;
     return true;
 }
+
+// ------------- Meal Class Section -------------
+class Meal{
+    private:
+        int mealId;
+        string name;
+        float price;
+        MealType tyep;
+    public:
+
+}
+
+
+
 int main() {
  
     return 0;
