@@ -237,96 +237,107 @@ enum class MealType {
     Lunch,
     Dinner,
 };
-class Meal{
-    private:
-        int mealId;
-        string mealName;
-        float price;
-        MealType meal_type;
-        vector<string> sideItems;
 
-    public:
+class Meal {
+private:
+    int mealId;
+    string mealName;
+    float price;
+    MealType mealType;
+    vector<string> sideItems;
+
+public:
     Meal();
     Meal(int, string, float, MealType);
 
-    void setmealId(int);
-    int getmealId() const;
-    void setmealName(const string&) ;
-    string getmealName() const;
+    void setMealId(int);
+    int getMealId() const;
+    void setMealName(const string&);
+    string getMealName() const;
     void setPrice(float);
     float getPrice() const;
-    void setmealType(MealType);
-    MealType getmealType();
-    void setsideItem(const vector<string>&);
-    vector<string> getsideItem()const;
-    void print()const;
-
-
+    void setMealType(MealType);
+    MealType getMealType() const;
+    void setSideItems(const vector<string>&);
+    vector<string> getSideItems() const;
+    void print() const;
 };
-//Constructor
-Meal::Meal(){
+
+Meal::Meal() {
     mealId = 0;
     mealName = "";
     price = 0.0;
-    meal_type = MealType::Breakfast;
+    mealType = MealType::Breakfast;
 }
-Meal::Meal(int id, string n, float p, MealType t){
+
+Meal::Meal(int id, string n, float p, MealType t) {
     mealId = id;
     mealName = n;
     price = p;
-    meal_type = t;
+    mealType = t;
 }
-// Setter & Getter
-void Meal::setmealId(int id){
-    if(id > 0)
+
+void Meal::setMealId(int id) {
+    if (id > 0)
         mealId = id;
     else
         cout << "Invalid meal id." << endl;
 }
-int Meal::getmealId() const{
+
+int Meal::getMealId() const {
     return mealId;
 }
-void Meal::setmealName(const string& n) {
+
+void Meal::setMealName(const string& n) {
     mealName = n;
 }
-string Meal::getmealName() const{
+
+string Meal::getMealName() const {
     return mealName;
 }
-void Meal::setPrice(float p){
+
+void Meal::setPrice(float p) {
     price = p;
 }
-float Meal::getPrice() const{
+
+float Meal::getPrice() const {
     return price;
 }
-void Meal::setmealType(MealType mt){
-    meal_type = mt;
+
+void Meal::setMealType(MealType mt) {
+    mealType = mt;
 }
-MealType Meal::getmealType(){
-    return meal_type;
+
+MealType Meal::getMealType() const {
+    return mealType;
 }
-void Meal::setsideItem(const vector<string>& item){
+
+void Meal::setSideItems(const vector<string>& item) {
     sideItems = item;
 }
-vector<string> Meal::getsideItem()const{
+
+vector<string> Meal::getSideItems() const {
     return sideItems;
 }
-void Meal::print() const{
-        cout << "Id: " << mealId << endl;
-        cout << "Name: " << mealName << endl;
-        cout << "Price: " << price <<endl;
-        cout << "Type: ";
-        switch (meal_type) {
-            case MealType::Breakfast: cout << "Breakfast"; break;
-            case MealType::Lunch: cout << "Lunch"; break;
-            case MealType::Dinner: cout << "Dinner"; break;
-        }
-        for (size_t i = 0; i < sideItems.size(); ++i) {
-            cout << sideItems[i];
-            if (i != sideItems.size() - 1)
-                cout << ", ";
-        }
-cout << endl;
 
+void Meal::print() const {
+    cout << "Id: " << mealId << endl;
+    cout << "Name: " << mealName << endl;
+    cout << "Price: " << price << endl;
+    cout << "Type: ";
+    switch (mealType) {
+        case MealType::Breakfast: cout << "Breakfast"; break;
+        case MealType::Lunch: cout << "Lunch"; break;
+        case MealType::Dinner: cout << "Dinner"; break;
+    }
+
+    for (size_t i = 0; i < sideItems.size(); ++i) {
+        cout << sideItems[i];
+        if (i != sideItems.size() - 1)
+            cout << ", ";
+    }
+
+    cout << endl;
 }
 
 // ------------- DiningHall Class Section -------------
