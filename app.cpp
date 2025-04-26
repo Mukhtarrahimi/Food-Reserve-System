@@ -239,6 +239,8 @@ class Meal{
         string mealName;
         float price;
         MealType meal_type;
+        vector<string> sideItems;
+
     public:
     Meal();
     Meal(int, string, float, MealType);
@@ -251,6 +253,9 @@ class Meal{
     float getPrice() const;
     void setmealType(MealType);
     MealType getmealType();
+    void setsideItem(const vector<string>&);
+    vector<string> getsideItem()const;
+
 
 };
 //Constructor
@@ -293,6 +298,12 @@ void Meal::setmealType(MealType mt){
 }
 MealType Meal::getmealType(){
     return meal_type;
+}
+void Meal::setsideItem(const vector<string>& item){
+    sideItems = item;
+}
+vector<string> Meal::getsideItem()const{
+    return sideItems;
 }
 int main() {
  
