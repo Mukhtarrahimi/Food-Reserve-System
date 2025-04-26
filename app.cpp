@@ -138,6 +138,10 @@ public:
     Student getStudent() const;
     void setDiningHall(const DiningHall&);
     DiningHall getDiningHall() const;
+    void setMeal(const Meal& );
+    Meal getMeal() const;
+
+
 
 };
 
@@ -162,11 +166,29 @@ void Reservation::setReservationId(int id) {
     else
         cout << "eror! invalid id." << endl;
 }
-int Reservation::getReservationId() const { return reservationId; }
-void Reservation::setStudent(const Student& s) { student = s; }
-Student Reservation::getStudent() const { return student; }
-void Reservation::setDiningHall(const DiningHall& h){hall = h;}
-DiningHall Reservation::getDiningHall() const {return hall;}
+int Reservation::getReservationId() const {
+    return reservationId; 
+}
+void Reservation::setStudent(const Student& s) {
+     student = s;
+}
+Student Reservation::getStudent() const { 
+    return student; 
+}
+void Reservation::setDiningHall(const DiningHall& h){
+    hall = h;
+}
+DiningHall Reservation::getDiningHall() const {
+    return hall;
+}
+void Reservation::setMeal(const Meal& m) { 
+    meal = m; 
+}
+Meal Reservation::getMeal() const {
+     return meal;
+}
+
+
 
 
 
