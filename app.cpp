@@ -315,11 +315,13 @@ void Meal::print() const{
             case MealType::Lunch: cout << "Lunch"; break;
             case MealType::Dinner: cout << "Dinner"; break;
         }
-        cout << "\nSide items: ";
-        for (const auto& item : sideItems) {
-            cout << item << ", ";
+        for (size_t i = 0; i < sideItems.size(); ++i) {
+            cout << sideItems[i];
+            if (i != sideItems.size() - 1)
+                cout << ", ";
         }
-        cout << std::endl;
+cout << endl;
+
 }
 
 int main() {
