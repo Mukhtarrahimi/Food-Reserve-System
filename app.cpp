@@ -119,15 +119,31 @@ void Student::print() const {
 
 class Reservation {
 private:
-    int reservation_id;
+    int reservationId;
     Student student;    
    // DiningHall dHall;
     //Meal meal;
   //  ReservationStatus status;
-    time_t created_at;  
+    time_t createdAt;  
 
 public:
+     Reservation();
+    Reservation(int id, const Student& s, const DiningHall& h, const Meal& m, ReservationStatus st, time_t ct);
+
 };
+Reservation::Reservation(){
+    reservationId = 0;
+    //status =; 
+    createdAt = time(0);
+}
+Reservation(int id, const Student& s, const DiningHall& h, const Meal& m, ReservationStatus st, time_t ct){
+    reservationId = id;
+    Student = s;
+    DiningHall = h;
+    Meal = m;
+    ReservationStatus = st;
+    time_t = ct;
+}
 
 int main() {
  
