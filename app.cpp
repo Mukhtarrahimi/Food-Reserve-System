@@ -30,6 +30,9 @@ public:
 
     void setEmail(const string&);
     string getEmail() const;
+
+    void setBalance(float);
+    float getBalance() const;
 };
 
 // Constructor
@@ -83,6 +86,16 @@ void Student::setEmail(const string& e) {
 string Student::getEmail() const {
     return email;
 }
+void Student::setBalance(float b) {
+    if (b >= 0 && b <= 10000)
+        balance = b;
+    else
+        cout << "low balance!\n";
+}
+float Student::getBalance() const {
+    return balance;
+}
+
 int main() {
  
     return 0;
