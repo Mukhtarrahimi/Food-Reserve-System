@@ -134,6 +134,11 @@ public:
     // getter & setter 
     void setReservationId(int id);
     int getReservationId() const;
+    void setStudent(const Student& );
+    Student getStudent() const;
+
+
+
 
 
 };
@@ -155,11 +160,14 @@ Reservation(int id, const Student& s, const DiningHall& h, const Meal& m, Reserv
 // getter & setter 
 void Reservation::setReservationId(int id) {
     if(id > 0)
-     reservation_id = id; 
+        reservationId = id; 
     else
         cout << "eror! invalid id." << endl;
 }
-int Reservation::getReservationId() const { return reservation_id; }
+int Reservation::getReservationId() const { return reservationId; }
+void Reservation::setStudent(const Student& s) { student = s; }
+Student Reservation::getStudent() const { return student; }
+
 
 
 int main() {
