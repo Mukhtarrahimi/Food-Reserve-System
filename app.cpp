@@ -142,7 +142,8 @@ public:
     Meal getMeal() const;
     void setStatus(ReservationStatus);
     ReservationStatus getStatus() const;
-
+    void setCreatedAt(time_t);
+    time_t getCreatedAt() const;
 };
 
 // constructor
@@ -193,6 +194,14 @@ void Reservation::setStatus(ReservationStatus st) {
 ReservationStatus Reservation::getStatus() const {
      return status;
 }
+void Reservation::setCreatedAt(time_t ct) {
+     createdAt = ct;
+}
+time_t Reservation::getCreatedAt() const {
+     return createdAt;
+}
+
+
 
 
 
