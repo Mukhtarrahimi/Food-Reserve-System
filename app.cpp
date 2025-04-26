@@ -21,8 +21,12 @@ public:
 
     void setUserId(int);
     int getUserId() const;
+
     void setStudentId(const string&);
     string getStudentId() const;
+
+    void setName(const string&);
+    string getName() const;
 };
 
 // Constructor
@@ -57,6 +61,15 @@ void Student::setStudentId(const string& s) {
 }
 string Student::getStudentId() const {
     return studentId;
+}
+void Student::setName(const string& n) {
+    if (n.length() >= 3)
+        name = n;
+    else
+        cout << "Error! less 3 characters.\n";
+}
+string Student::getName() const {
+    return name;
 }
 int main() {
  
