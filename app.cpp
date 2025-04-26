@@ -33,6 +33,9 @@ public:
 
     void setBalance(float);
     float getBalance() const;
+
+    void setIsActive(bool);
+    bool getIsActive() const; 
 };
 
 // Constructor
@@ -94,6 +97,12 @@ void Student::setBalance(float b) {
 }
 float Student::getBalance() const {
     return balance;
+}
+void Student::setIsActive(bool is) {
+    isActive = is;
+}
+bool Student::getIsActive() const {
+    return isActive;
 }
 
 int main() {
