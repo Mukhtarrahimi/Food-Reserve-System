@@ -345,6 +345,8 @@ class DiningHall{
         string gethallName()const;
         void setAddress(const string&);
         string getAddress()const;
+        void setCapicity(int);
+        int getCapicity()const;
 
 };
 DiningHall::DiningHall(){
@@ -377,6 +379,12 @@ void DiningHall::setAddress(const string& ad){
 }
 string DiningHall::getAddress()const{
     return address;
+}
+void DiningHall::setCapicity(int cp){
+    capicity = cp;
+}
+int DiningHall::getCapicity()const{
+    return capicity;
 }
 
 int main() {
