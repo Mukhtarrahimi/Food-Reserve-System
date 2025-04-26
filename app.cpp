@@ -16,6 +16,11 @@ private:
 public:
     Student();
     Student(int, const string&, const string&, const string&, float, bool);
+    //bool reserve_meal(Meal meal, DiningHall hall);
+    //bool cancel_reservation(int reservation_id);
+
+    void setUserId(int);
+    int getUserId() const;
 };
 
 // Constructor
@@ -33,6 +38,16 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     email = e;
     balance = b;
     isActive = is;
+}
+// Setters & Getters
+void Student::setUserId(int u) {
+    if (u <= 0)
+        cout << "invalid user id!\n";
+    else
+        userId = u;
+}
+int Student::getUserId() const {
+    return userId;
 }
 int main() {
  
