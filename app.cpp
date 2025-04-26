@@ -21,6 +21,8 @@ public:
 
     void setUserId(int);
     int getUserId() const;
+    void setStudentId(const string&);
+    string getStudentId() const;
 };
 
 // Constructor
@@ -48,6 +50,13 @@ void Student::setUserId(int u) {
 }
 int Student::getUserId() const {
     return userId;
+}
+
+void Student::setStudentId(const string& s) {
+    studentId = s;
+}
+string Student::getStudentId() const {
+    return studentId;
 }
 int main() {
  
