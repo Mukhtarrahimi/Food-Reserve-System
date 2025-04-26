@@ -337,8 +337,10 @@ class DiningHall{
         string address;
         int capicity;
     public:
-    DiningHall();
-    DiningHall(int, string, string, int);
+        DiningHall();
+        DiningHall(int, string, string, int);
+        void sethallId(int);
+        int gethallId() const;
 
 };
 DiningHall::DiningHall(){
@@ -352,6 +354,13 @@ DiningHall::DiningHall(int hid, string hn, string ad, int cp){
     name = hn;
     address = ad;
     capicity = cp;
+}
+// setter & getter
+void DiningHall::sethallId(int id){
+    hallId = id;
+}
+int DiningHall::gethallId() const{
+    return hallId;
 }
 
 int main() {
