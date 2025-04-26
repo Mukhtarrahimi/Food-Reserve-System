@@ -115,6 +115,20 @@ void Student::print() const {
          << "Is Active: " << boolalpha << isActive << endl;
 }
 
+// ------------- Student Class Section -------------
+
+class Reservation {
+private:
+    int reservation_id;
+    Student student;    
+   // DiningHall dHall;
+    //Meal meal;
+  //  ReservationStatus status;
+    time_t created_at;  
+
+public:
+};
+
 int main() {
  
     return 0;
