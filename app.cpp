@@ -243,7 +243,13 @@ class Meal{
     Meal();
     Meal(int, string, float, MealType);
 
+    void setmealId(int);
+    int getmealId() const;
+    void setName(string) const;
+    string getName() const;
+
 };
+//Constructor
 Meal::Meal(){
     mealId = 0;
     name = "";
@@ -255,6 +261,16 @@ Meal::Meal(int id, string n, float p, MealType t){
     name = n;
     price = p;
     type = t;
+}
+// Setter & Getter
+void Meal::setmealId(int id){
+    if(id > 0)
+        mealId = id;
+    else
+        cout << "Invalid meal id." << endl;
+}
+int Meal::getmealId() const{
+    return mealId;
 }
 int main() {
  
