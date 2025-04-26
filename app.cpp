@@ -247,6 +247,8 @@ class Meal{
     int getmealId() const;
     void setmealName(const string&) ;
     string getmealName() const;
+    void setPrice(float);
+    float getPrice() const;
 
 };
 //Constructor
@@ -277,6 +279,12 @@ void Meal::setmealName(const string& n) {
 }
 string Meal::getmealName() const{
     return mealName;
+}
+void Meal::setPrice(float p){
+    price = p;
+}
+float Meal::getPrice() const{
+    return price;
 }
 int main() {
  
