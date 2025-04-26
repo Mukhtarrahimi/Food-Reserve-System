@@ -27,6 +27,9 @@ public:
 
     void setName(const string&);
     string getName() const;
+
+    void setEmail(const string&);
+    string getEmail() const;
 };
 
 // Constructor
@@ -70,6 +73,15 @@ void Student::setName(const string& n) {
 }
 string Student::getName() const {
     return name;
+}
+void Student::setEmail(const string& e) {
+    if (e.find('@') != string::npos && e.find('.') != string::npos)
+        email = e;
+    else
+        cout << "Invalid email!\n";
+}
+string Student::getEmail() const {
+    return email;
 }
 int main() {
  
