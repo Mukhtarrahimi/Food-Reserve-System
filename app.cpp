@@ -144,6 +144,9 @@ public:
     ReservationStatus getStatus() const;
     void setCreatedAt(time_t);
     time_t getCreatedAt() const;
+
+    void print() const;
+
 };
 
 // constructor
@@ -201,6 +204,18 @@ time_t Reservation::getCreatedAt() const {
      return createdAt;
 }
 
+void Reservation::print() const {
+    std::cout << "Reservation id: " << reservationId << endl;
+    std::cout << "Student name: " << student.getName() << endl;
+    std::cout << "Dining hall: " << dhall.getName() << endl;
+    std::cout << "meal: " << meal.getName() << endl;
+    if (status == ReservationStatus::ACTIVE) {
+    std::cout << "status: active" << std::endl;
+    } else {
+    std::cout << "status: cancelled" << std::endl;
+    }
+    std::cout << "Created At: " << ctime(&createdAt);
+}
 
 
 
