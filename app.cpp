@@ -36,6 +36,8 @@ public:
 
     void setIsActive(bool);
     bool getIsActive() const; 
+
+     void print() const;
 };
 
 // Constructor
@@ -57,7 +59,7 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
 // Setters & Getters
 void Student::setUserId(int u) {
     if (u <= 0)
-        cout << "invalid user id!\n";
+        cout << "invalid user id!" << endl;
     else
         userId = u;
 }
@@ -75,7 +77,7 @@ void Student::setName(const string& n) {
     if (n.length() >= 3)
         name = n;
     else
-        cout << "Error! less 3 characters.\n";
+        cout << "Error! less 3 characters." << endl;
 }
 string Student::getName() const {
     return name;
@@ -84,7 +86,7 @@ void Student::setEmail(const string& e) {
     if (e.find('@') != string::npos && e.find('.') != string::npos)
         email = e;
     else
-        cout << "Invalid email!\n";
+        cout << "Invalid email!" << endl;
 }
 string Student::getEmail() const {
     return email;
@@ -93,7 +95,7 @@ void Student::setBalance(float b) {
     if (b >= 0 && b <= 10000)
         balance = b;
     else
-        cout << "low balance!\n";
+        cout << "low balance!" << endl;
 }
 float Student::getBalance() const {
     return balance;
@@ -103,6 +105,14 @@ void Student::setIsActive(bool is) {
 }
 bool Student::getIsActive() const {
     return isActive;
+}
+void Student::print() const {
+    cout << "User ID: " << userId << endl
+         << "Student ID: " << studentId << endl
+         << "Name: " << name << endl
+         << "Email: " << email << endl
+         << "Balance: " << balance << endl
+         << "Is Active: " << boolalpha << isActive << endl;
 }
 
 int main() {
