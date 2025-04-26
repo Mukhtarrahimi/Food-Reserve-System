@@ -117,6 +117,8 @@ void Student::print() const {
 
 // ------------- Student Class Section -------------
 
+enum class ReservationStatus { ACTIVE, CANCELLED };
+
 class Reservation {
 private:
     int reservationId;
@@ -133,7 +135,7 @@ public:
 };
 Reservation::Reservation(){
     reservationId = 0;
-    //status =; 
+    status = ReservationStatus::ACTIVE;
     createdAt = time(0);
 }
 Reservation(int id, const Student& s, const DiningHall& h, const Meal& m, ReservationStatus st, time_t ct){
