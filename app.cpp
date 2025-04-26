@@ -238,11 +238,24 @@ class Meal{
         int mealId;
         string name;
         float price;
-        MealType tyep;
+        MealType type;
     public:
+    Meal();
+    Meal(int, string, float, MealType);
 
 };
-
+Meal::Meal(){
+    mealId = 0;
+    name = "";
+    price = 0.0;
+    type = MealType::Breakfast;
+}
+Meal::Meal(int id, string n, float p, MealType t){
+    mealId = id;
+    name = n;
+    price = p;
+    type = t;
+}
 int main() {
  
     return 0;
