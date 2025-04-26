@@ -140,8 +140,8 @@ public:
     DiningHall getDiningHall() const;
     void setMeal(const Meal& );
     Meal getMeal() const;
-
-
+    void setStatus(ReservationStatus);
+    ReservationStatus getStatus() const;
 
 };
 
@@ -187,6 +187,13 @@ void Reservation::setMeal(const Meal& m) {
 Meal Reservation::getMeal() const {
      return meal;
 }
+void Reservation::setStatus(ReservationStatus st) {
+     status = st;
+}
+ReservationStatus Reservation::getStatus() const {
+     return status;
+}
+
 
 
 
