@@ -4,6 +4,10 @@
 #include <ctime>
 using namespace std;
 
+class Reservation;
+class Meal;
+class DiningHall;
+
 // ------------- Student Class Section -------------
 class Student {
 private:
@@ -307,7 +311,8 @@ vector<string> Meal::getsideItem()const{
     return sideItems;
 }
 void Meal::print() const{
-        cout << "id: " << mealId << endl << "mealName: " << mealName << endl;
+        cout << "Id: " << mealId << endl;
+        cout << "Name: " << mealName << endl;
         cout << "Price: " << price <<endl;
         cout << "Type: ";
         switch (meal_type) {
@@ -323,6 +328,18 @@ void Meal::print() const{
 cout << endl;
 
 }
+
+// ------------- DiningHall  Class Section -------------
+class DiningHall{
+    private:
+        int hallId;
+        string name;
+        string address;
+        int capicity;
+    public:
+
+};
+
 
 int main() {
  
