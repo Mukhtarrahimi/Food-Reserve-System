@@ -56,7 +56,7 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     balance = b;
     isActive = is;
 }
-// Setters & Getters
+// setters & getters
 void Student::setUserId(int u) {
     if (u <= 0)
         cout << "invalid user id!" << endl;
@@ -129,10 +129,16 @@ private:
     time_t createdAt;  
 
 public:
-     Reservation();
-    Reservation(int id, const Student& s, const DiningHall& h, const Meal& m, ReservationStatus st, time_t ct);
+    Reservation();
+    Reservation(int, const Student& , const DiningHall& , const Meal& , ReservationStatus , time_t );
+    // getter & setter 
+    void setReservationId(int id);
+    int getReservationId() const;
+
 
 };
+
+// constructor
 Reservation::Reservation(){
     reservationId = 0;
     status = ReservationStatus::ACTIVE;
@@ -146,6 +152,15 @@ Reservation(int id, const Student& s, const DiningHall& h, const Meal& m, Reserv
     ReservationStatus = st;
     time_t = ct;
 }
+// getter & setter 
+void Reservation::setReservationId(int id) {
+    if(id > 0)
+     reservation_id = id; 
+    else
+        cout << "eror! invalid id." << endl;
+}
+int Reservation::getReservationId() const { return reservation_id; }
+
 
 int main() {
  
