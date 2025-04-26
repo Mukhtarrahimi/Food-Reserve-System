@@ -136,10 +136,8 @@ public:
     int getReservationId() const;
     void setStudent(const Student& );
     Student getStudent() const;
-
-
-
-
+    void setDiningHall(const DiningHall&);
+    DiningHall getDiningHall() const;
 
 };
 
@@ -167,6 +165,8 @@ void Reservation::setReservationId(int id) {
 int Reservation::getReservationId() const { return reservationId; }
 void Reservation::setStudent(const Student& s) { student = s; }
 Student Reservation::getStudent() const { return student; }
+void Reservation::setDiningHall(const DiningHall& h){hall = h;}
+DiningHall Reservation::getDiningHall() const {return hall;}
 
 
 
