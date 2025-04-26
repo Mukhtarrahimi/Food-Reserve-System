@@ -228,6 +228,11 @@ bool Reservation::cancel() {
 }
 
 // ------------- Meal Class Section -------------
+enum class MealType {
+    Breakfast,
+    Lunch,
+    Dinner,
+};
 class Meal{
     private:
         int mealId;
@@ -236,9 +241,7 @@ class Meal{
         MealType tyep;
     public:
 
-}
-
-
+};
 
 int main() {
  
