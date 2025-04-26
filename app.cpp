@@ -255,6 +255,7 @@ class Meal{
     MealType getmealType();
     void setsideItem(const vector<string>&);
     vector<string> getsideItem()const;
+    void print()const;
 
 
 };
@@ -305,6 +306,22 @@ void Meal::setsideItem(const vector<string>& item){
 vector<string> Meal::getsideItem()const{
     return sideItems;
 }
+void Meal::print() const{
+        cout << "id: " << mealId << endl << "mealName: " << mealName << endl;
+        cout << "Price: " << price <<endl;
+        cout << "Type: ";
+        switch (meal_type) {
+            case MealType::Breakfast: cout << "Breakfast"; break;
+            case MealType::Lunch: cout << "Lunch"; break;
+            case MealType::Dinner: cout << "Dinner"; break;
+        }
+        cout << "\nSide items: ";
+        for (const auto& item : sideItems) {
+            cout << item << ", ";
+        }
+        cout << std::endl;
+}
+
 int main() {
  
     return 0;
