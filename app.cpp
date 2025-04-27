@@ -17,13 +17,13 @@ private:
     string email;
     float balance;
     bool isActive;
-    vector <Reservation*> reservation;
+    vector <Reservation*> reservations;
     
 public:
     Student();
     Student(int, const string&, const string&, const string&, float, bool);
-    bool reserve_meal(Meal meal, DiningHall hall);
-    bool cancel_reservation(int reservation_id);
+    bool reserve_meal(const Meal& ,const DiningHall& );
+    bool cancel_reservation(const int);
 
     void setReservation(const vector<Reservation*>&);
     vector <Reservation*> getReservation()const;
@@ -65,23 +65,29 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     balance = b;
     isActive = is;
 }
-// setters & getters
-void Student::setReservation(const vector<Reservation*>& newReserv) {
-    for (size_t i = 0; i < reservation.size(); ++i) {
-        delete reservation[i];
-    }
-    reservation.clear(); 
-
-    for (size_t i = 0; i < newReserv.size(); ++i) {
-        if (newReserv[i] != nullptr) {
-            reservation.push_back(new Reservation(*newReserv[i])); 
-        }
+bool Student::reserve_meal(const Meal& meal, const DiningHall& dHall) {
+    if (balance < meal.getPrice()) {
+        cout << "Not enough value!" << endl;
+        return false;
     }
 }
 
 
+// setters & getters
+void Student::setReservation(const vector<Reservation*>& newReserv) {
+    for (size_t i = 0; i < reservations.size(); ++i) {
+        delete reservations[i];
+    }
+    reservations.clear(); 
+
+    for (size_t i = 0; i < newReserv.size(); ++i) {
+        if (newReserv[i] != nullptr) {
+            reservations.push_back(new Reservation(*newReserv[i])); 
+        }
+    }
+}
 vector<Reservation*>Student::getReservation()const{
-    return reservation;
+    return reservations;
 }
 void Student::setUserId(int u) {
     if (u > 0)
@@ -143,7 +149,7 @@ void Student::print() const {
 
 // ------------- Reservation Class Section -------------
 
-enum class ReservationStatus { ACTIVE, CANCELLED };
+enum class ReservationStatus { Active, Canceled };
 class Reservation {
 private:
     int reservationId;
@@ -177,7 +183,7 @@ public:
 // constructor
 Reservation::Reservation(){
     reservationId = 0;
-    status = ReservationStatus::ACTIVE;
+    status = ReservationStatus::Active;
     createdAt = time(0);
 }
 Reservation::Reservation(int id, const Student& s, const DiningHall& h, const Meal& m, ReservationStatus st, time_t ct){
@@ -234,7 +240,7 @@ void Reservation::print() const {
     std::cout << "Student name: " << student.getName() << endl;
     std::cout << "Dining hall: " << dHall.getHallName() << endl;
     std::cout << "Meal: " << meal.getName() << endl;
-    if (status == ReservationStatus::ACTIVE) {
+    if (status == ReservationStatus::Active) {
     std::cout << "status: active" << std::endl;
     } else {
     std::cout << "status: cancelled" << std::endl;
@@ -243,11 +249,11 @@ void Reservation::print() const {
 }
 
 bool Reservation::cancel() {
-    if (status == ReservationStatus::CANCELLED) {
+    if (status == ReservationStatus::Canceled) {
         cout << "Reservation is already cancelled." << endl;
         return false;
     }
-    status = ReservationStatus::CANCELLED;
+    status = ReservationStatus::Canceled;
     cout << "Reservation cancelled successfully." << endl;
     return true;
 }
@@ -437,6 +443,7 @@ int DiningHall::getCapacity() const {
 }
 
 int main() {
+
  
     return 0;
 }
