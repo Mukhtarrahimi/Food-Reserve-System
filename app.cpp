@@ -70,8 +70,15 @@ void Student::setReservation(const vector<Reservation*>& newReserv) {
     for (size_t i = 0; i < reservation.size(); ++i) {
         delete reservation[i];
     }
-    reservation = newReserv; 
+    reservation.clear(); 
+
+    for (size_t i = 0; i < newReserv.size(); ++i) {
+        if (newReserv[i] != nullptr) {
+            reservation.push_back(new Reservation(*newReserv[i])); 
+        }
+    }
 }
+
 
 vector<Reservation*>Student::getReservation()const{
     return reservation;
@@ -225,7 +232,7 @@ time_t Reservation::getCreatedAt() const {
 void Reservation::print() const {
     std::cout << "Reservation id: " << reservationId << endl;
     std::cout << "Student name: " << student.getName() << endl;
-    std::cout << "Dining hall: " << dHall.getName() << endl;
+    std::cout << "Dining hall: " << dHall.getHallName() << endl;
     std::cout << "Meal: " << meal.getName() << endl;
     if (status == ReservationStatus::ACTIVE) {
     std::cout << "status: active" << std::endl;
