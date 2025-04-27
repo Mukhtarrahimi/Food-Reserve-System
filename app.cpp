@@ -22,8 +22,8 @@ private:
 public:
     Student();
     Student(int, const string&, const string&, const string&, float, bool);
-    bool reserve_meal(const Meal& ,const DiningHall& );
-    bool cancel_reservation(const int);
+    bool reserveMeal(const Meal& ,const DiningHall& );
+    bool cancelReservation(const int);
 
     void setReservation(const vector<Reservation*>&);
     vector <Reservation*> getReservation()const;
@@ -65,13 +65,21 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     balance = b;
     isActive = is;
 }
-bool Student::reserve_meal(const Meal& meal, const DiningHall& dHall) {
+bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
     if (balance < meal.getPrice()) {
         cout << "Not enough value!" << endl;
         return false;
     }
 }
-
+bool Student::cancelReservation(int reservationId) {
+    for (auto& res : reservations) {
+        if (res->getReservationId() == reservationId) {
+            return res->cancel();
+        }
+    }
+    cout << "Not found!" << endl;
+    return false;
+}
 
 // setters & getters
 void Student::setReservation(const vector<Reservation*>& newReserv) {
