@@ -141,8 +141,10 @@ string Student::getStudentId() const {
     return studentId;
 }
 void Student::setName(const string& n) {
-    if (n.length() >= 3)
+    if(!n.empty()){
+        if (n.length() >= 3)
         name = n;
+    }
     else
         cout << "Error! less 3 characters." << endl;
 }
@@ -353,7 +355,13 @@ int Meal::getMealId() const {
 }
 
 void Meal::setMealName(const string& n) {
-    mealName = n;
+    if(!n.empty()){
+        if (n.length() >= 3)
+        mealName = n;
+    }
+
+    else
+        cout << "Can not be empty." << endl;
 }
 
 string Meal::getMealName() const {
@@ -454,7 +462,12 @@ int DiningHall::getHallId() const {
 }
 
 void DiningHall::setHallName(const string& n) {
-    name = n;
+    if(!n.empty()){
+        if (n.length() >= 3)
+        name = n;
+    }
+    else
+        cout << "Can not be empty." << endl;
 }
 
 string DiningHall::getHallName() const {
