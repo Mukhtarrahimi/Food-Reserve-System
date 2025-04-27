@@ -66,11 +66,13 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     isActive = is;
 }
 // setters & getters
-void Student::setReservation(const vector<Reservation*>& newReserv){
-    for(Reservation* res : reservation)
-        delete res;
-    reservation = newReserv;
+void Student::setReservation(const vector<Reservation*>& newReserv) {
+    for (size_t i = 0; i < reservation.size(); ++i) {
+        delete reservation[i];
+    }
+    reservation = newReserv; 
 }
+
 vector<Reservation*>Student::getReservation()const{
     return reservation;
 }
