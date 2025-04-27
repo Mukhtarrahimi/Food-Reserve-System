@@ -66,10 +66,37 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     isActive = is;
 }
 bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
+    static int reservationCounter = 1;
+
     if (balance < meal.getPrice()) {
-        cout << "Not enough value!" << endl;
+        cout << "Not enough balance!" << endl;
         return false;
     }
+
+    time_t now = time(0);
+    tm today = *localtime(&now);
+
+    for (const auto& res : reservations) {
+        time_t reservTime = res->getCreatedAt(); 
+        tm reservDate = *localtime(&reservTime);
+
+        if (today.tm_year == reservDate.tm_year &&
+            today.tm_yday == reservDate.tm_yday &&
+            res->getMeal().getMealType() == meal.getMealType() &&
+            res->getStatus() == ReservationStatus::Active) { 
+            cout << "Already reserved for this meal." << endl;
+            return false;
+        }
+    }
+
+    Reservation* newReservation = new Reservation(
+        reservationCounter++, *this, dHall, meal, ReservationStatus::Active, now
+    );
+
+    reservations.push_back(newReservation);
+    balance -= meal.getPrice();
+    cout << "Reservation successful!" << endl;
+    return true;
 }
 bool Student::cancelReservation(int reservationId) {
     for (auto& res : reservations) {
@@ -265,40 +292,6 @@ bool Reservation::cancel() {
     cout << "Reservation cancelled successfully." << endl;
     return true;
 }
-bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
-    static int reservationCounter = 1;
-
-    if (balance < meal.getPrice()) {
-        cout << "Not enough balance!" << endl;
-        return false;
-    }
-
-    time_t now = time(0);
-    tm today = *localtime(&now);
-
-    for (const auto& res : reservations) {
-        time_t reservTime = res->getCreatedAt(); 
-        tm reservDate = *localtime(&reservTime);
-
-        if (today.tm_year == reservDate.tm_year &&
-            today.tm_yday == reservDate.tm_yday &&
-            res->getMeal().getMealType() == meal.getMealType() &&
-            res->getStatus() == ReservationStatus::Active) { 
-            cout << "Already reserved for this meal." << endl;
-            return false;
-        }
-    }
-
-    Reservation* newReservation = new Reservation(
-        reservationCounter++, *this, dHall, meal, ReservationStatus::Active, now
-    );
-
-    reservations.push_back(newReservation);
-    balance -= meal.getPrice();
-    cout << "Reservation successful!" << endl;
-    return true;
-}
-
 
 // ------------- Meal Class Section -------------
 enum class MealType {
