@@ -260,6 +260,7 @@ public:
     MealType getMealType() const;
     void setSideItems(const vector<string>&);
     void addSideItem(const string&);
+    void updatePrice(float);
     vector<string> getSideItems() const;
     void print() const;
 };
@@ -319,7 +320,9 @@ void Meal::setSideItems(const vector<string>& item) {
 void Meal::addSideItem(const string& item){
     sideItems.push_back(item);
 }
-
+void Meal::updatePrice(float newPrice){
+    price = newPrice;
+}
 vector<string> Meal::getSideItems() const {
     return sideItems;
 }
