@@ -17,11 +17,12 @@ private:
     string email;
     float balance;
     bool isActive;
+    
 public:
     Student();
     Student(int, const string&, const string&, const string&, float, bool);
-    //bool reserve_meal(Meal meal, DiningHall hall);
-    //bool cancel_reservation(int reservation_id);
+    bool reserve_meal(Meal meal, DiningHall hall);
+    bool cancel_reservation(int reservation_id);
 
     void setUserId(int);
     int getUserId() const;
@@ -122,7 +123,6 @@ void Student::print() const {
 // ------------- Reservation Class Section -------------
 
 enum class ReservationStatus { ACTIVE, CANCELLED };
-
 class Reservation {
 private:
     int reservationId;
@@ -259,6 +259,7 @@ public:
     void setMealType(MealType);
     MealType getMealType() const;
     void setSideItems(const vector<string>&);
+    void addSideItem(const string&);
     vector<string> getSideItems() const;
     void print() const;
 };
@@ -314,6 +315,9 @@ MealType Meal::getMealType() const {
 
 void Meal::setSideItems(const vector<string>& item) {
     sideItems = item;
+}
+void Meal::addSideItem(const string& item){
+    sideItems.push_back(item);
 }
 
 vector<string> Meal::getSideItems() const {
