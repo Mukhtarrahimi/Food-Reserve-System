@@ -17,12 +17,16 @@ private:
     string email;
     float balance;
     bool isActive;
+    vector <Reservation*> reservation;
     
 public:
     Student();
     Student(int, const string&, const string&, const string&, float, bool);
     bool reserve_meal(Meal meal, DiningHall hall);
     bool cancel_reservation(int reservation_id);
+
+    void setReservation(const vector<Reservation*>&);
+    vector <Reservation*> getReservation()const;
 
     void setUserId(int);
     int getUserId() const;
@@ -62,6 +66,14 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     isActive = is;
 }
 // setters & getters
+void Student::setReservation(const vector<Reservation*>& newReserv){
+    for(Reservation* res : reservation)
+        delete res;
+    reservation = newReserv;
+}
+vector<Reservation*>Student::getReservation()const{
+    return reservation;
+}
 void Student::setUserId(int u) {
     if (u > 0)
         userId = u;
