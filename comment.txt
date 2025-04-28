@@ -1,0 +1,2 @@
+g++ src/*.cpp -o output/FoodReserveSystem.exe
+.\output\FoodReserveSystem.exe

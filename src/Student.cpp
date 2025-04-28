@@ -21,7 +21,7 @@ bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
     static int reservationCounter = 1;
 
     if (balance < meal.getPrice()) {
-        cout << "Not enough balance!" << endl;
+        lastStatusReservation = "Not enough balance!";
         return false;
     }
 
@@ -47,7 +47,7 @@ bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
 
     reservations.push_back(newReservation);
     balance -= meal.getPrice();
-    cout << "Reservation successful!" << endl;
+    lastStatusReservation = "Reservation successful!";
     return true;
 }
 
@@ -144,5 +144,7 @@ void Student::print() const {
          << "Name: " << name << endl
          << "Email: " << email << endl
          << "Balance: " << balance << endl
-         << "Is Active: " << boolalpha << isActive << endl;
+         << "Is Active: " << boolalpha << isActive << endl
+         << "last Status Reservation: " << lastStatusReservation << endl;
+
 }

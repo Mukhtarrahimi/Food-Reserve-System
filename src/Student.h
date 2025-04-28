@@ -13,6 +13,7 @@ private:
     float balance;
     bool isActive;
     vector<Reservation*> reservations;
+    string lastStatusReservation;
 
 public:
     Student();
@@ -40,6 +41,7 @@ public:
 
     void setIsActive(bool);
     bool getIsActive() const;
+    string getLastStatusReservation()const;
 
     void print() const;
 };
