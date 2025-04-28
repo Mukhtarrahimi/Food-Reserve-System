@@ -1,47 +1,6 @@
+#include "Reservation.h"
+#include "Student.h"
 #include <iostream>
-#include <string>
-#include <ctime>
-//! Required class source files
-#include "DiningHall.cpp"
-#include "Meal.cpp"
-#include "Student.cpp"
-using namespace std;
-//TODO:Forward Declarations:
-class DiningHall;
-class Meal;
-class Student;
-
-enum class ReservationStatus { Active, Canceled };
-
-class Reservation {
-private:
-    int reservationId;
-    Student* student;
-    DiningHall dHall;
-    Meal meal;
-    ReservationStatus status;
-    time_t createdAt;
-
-public:
-    Reservation();
-    Reservation(int, Student*, const DiningHall&, const Meal&, ReservationStatus, time_t);
-    void setReservationId(int);
-    int getReservationId() const;
-    void setStudent(Student*);
-    Student* getStudent() const;
-    void setDiningHall(const DiningHall&);
-    DiningHall getDiningHall() const;
-    void setMeal(const Meal&);
-    Meal getMeal() const;
-    void setStatus(ReservationStatus);
-    ReservationStatus getStatus() const;
-    void setCreatedAt(time_t);
-    time_t getCreatedAt() const;
-
-    void print() const;
-    bool cancel();
-};
-
 // Constructor
 
 Reservation::Reservation() {
