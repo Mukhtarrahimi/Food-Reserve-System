@@ -1,0 +1,197 @@
+#include <iostream>
+#include <vector>
+#include <string>
+//! Required class source files
+#include "Meal.cpp"
+#include "DiningHall.cpp"
+#include "Reservation.cpp"
+using namespace std;
+//TODO:Forward Declarations:
+class Meal;
+class DiningHall;
+class Reservation;
+
+class Student {
+private:
+    int userId;
+    string studentId;
+    string name;
+    string email;
+    float balance;
+    bool isActive;
+    vector<Reservation*> reservations;
+
+public:
+    Student();
+    Student(int, const string&, const string&, const string&, float, bool);
+    bool reserveMeal(const Meal&, const DiningHall&);
+    bool cancelReservation(int);
+
+    void setReservation(const vector<Reservation*>&);
+    vector<Reservation*> getReservation() const;
+
+    void setUserId(int);
+    int getUserId() const;
+
+    void setStudentId(const string&);
+    string getStudentId() const;
+
+    void setName(const string&);
+    string getName() const;
+
+    void setEmail(const string&);
+    string getEmail() const;
+
+    void setBalance(float);
+    float getBalance() const;
+
+    void setIsActive(bool);
+    bool getIsActive() const;
+
+    void print() const;
+};
+// Constructor
+Student::Student() {
+    userId = 0;
+    balance = 0.0;
+    isActive = true;
+}
+
+Student::Student(int u, const string& s, const string& n, const string& e, float b, bool is) {
+    userId = u;
+    studentId = s;
+    name = n;
+    email = e;
+    balance = b;
+    isActive = is;
+}
+
+bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
+    static int reservationCounter = 1;
+
+    if (balance < meal.getPrice()) {
+        cout << "Not enough balance!" << endl;
+        return false;
+    }
+
+    time_t now = time(0);
+    tm today = *localtime(&now);
+
+    for (const auto& res : reservations) {
+        time_t reservTime = res->getCreatedAt();
+        tm reservDate = *localtime(&reservTime);
+
+        if (today.tm_year == reservDate.tm_year &&
+            today.tm_yday == reservDate.tm_yday &&
+            res->getMeal().getMealType() == meal.getMealType() &&
+            res->getStatus() == ReservationStatus::Active) {
+            cout << "Already reserved for this meal." << endl;
+            return false;
+        }
+    }
+
+    Reservation* newReservation = new Reservation(
+        reservationCounter++, this, dHall, meal, ReservationStatus::Active, now
+    );
+
+    reservations.push_back(newReservation);
+    balance -= meal.getPrice();
+    cout << "Reservation successful!" << endl;
+    return true;
+}
+
+bool Student::cancelReservation(int reservationId) {
+    for (auto& res : reservations) {
+        if (res->getReservationId() == reservationId) {
+            return res->cancel();
+        }
+    }
+    cout << "Not found!" << endl;
+    return false;
+}
+
+void Student::setReservation(const vector<Reservation*>& newReserv) {
+    for (auto res : reservations) {
+        delete res;
+    }
+    reservations.clear();
+
+    for (auto newRes : newReserv) {
+        if (newRes != nullptr) {
+            reservations.push_back(new Reservation(*newRes));
+        }
+    }
+}
+
+vector<Reservation*> Student::getReservation() const {
+    return reservations;
+}
+// Getter & Setter
+void Student::setUserId(int u) {
+    if (u > 0)
+        userId = u;
+    else
+        cout << "Invalid user id!" << endl;
+}
+
+int Student::getUserId() const {
+    return userId;
+}
+
+void Student::setStudentId(const string& s) {
+    studentId = s;
+}
+
+string Student::getStudentId() const {
+    return studentId;
+}
+
+void Student::setName(const string& n) {
+    if (!n.empty() && n.length() >= 3)
+        name = n;
+    else
+        cout << "Error! Name must be at least 3 characters." << endl;
+}
+
+string Student::getName() const {
+    return name;
+}
+
+void Student::setEmail(const string& e) {
+    if (e.find('@') != string::npos && e.find('.') != string::npos)
+        email = e;
+    else
+        cout << "Invalid email!" << endl;
+}
+
+string Student::getEmail() const {
+    return email;
+}
+
+void Student::setBalance(float b) {
+    if (b >= 0 && b <= 10000)
+        balance = b;
+    else
+        cout << "Invalid balance!" << endl;
+}
+
+float Student::getBalance() const {
+    return balance;
+}
+
+void Student::setIsActive(bool is) {
+    isActive = is;
+}
+
+bool Student::getIsActive() const {
+    return isActive;
+}
+
+void Student::print() const {
+    cout << "User ID: " << userId << endl
+         << "Student ID: " << studentId << endl
+         << "Name: " << name << endl
+         << "Email: " << email << endl
+         << "Balance: " << balance << endl
+         << "Is Active: " << boolalpha << isActive << endl;
+}
