@@ -10,12 +10,12 @@ Reservation::Reservation() {
     createdAt = time(0);
 }
 Reservation::Reservation(int id, Student* s, const DiningHall& h, const Meal& m, ReservationStatus st, time_t ct) {
-    reservationId = id;
-    student = s;
-    dHall = h;
-    meal = m;
-    status = st;
-    createdAt = ct;
+    setReservationId(id);
+    setStudent(s);
+    setDiningHall(h);
+    setMeal(m);
+    setStatus(st);
+    setCreatedAt(ct);
 }
 // Getter & Setter
 void Reservation::setReservationId(int id) {

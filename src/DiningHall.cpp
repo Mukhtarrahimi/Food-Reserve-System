@@ -9,10 +9,10 @@ DiningHall::DiningHall() {
 }
 
 DiningHall::DiningHall(int hid, string hn, string ad, int cp) {
-    hallId = hid;
-    name = hn;
-    address = ad;
-    capacity = cp;
+    setHallId(hid);
+    setHallName(hn);
+    setAddress(ad);
+    setCapacity(cp);
 }
 // Getter & Setter
 void DiningHall::setHallId(int id) {

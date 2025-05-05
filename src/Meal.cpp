@@ -8,10 +8,10 @@ Meal::Meal() {
 }
 
 Meal::Meal(int id, string n, float p, MealType t) {
-    mealId = id;
-    mealName = n;
-    price = p;
-    mealType = t;
+    setMealId(id);
+    setMealName(n);
+    setPrice(p);
+    setMealType(t);
 }
 
 void Meal::setMealId(int id) {

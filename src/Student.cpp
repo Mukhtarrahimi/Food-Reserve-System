@@ -9,12 +9,12 @@ Student::Student() {
 }
 
 Student::Student(int u, const string& s, const string& n, const string& e, float b, bool is) {
-    userId = u;
-    studentId = s;
-    name = n;
-    email = e;
-    balance = b;
-    isActive = is;
+    setUserId(u);
+    setStudentId(s);
+    setName(n);
+    setEmail(e);
+    setBalance(b);
+    setIsActive(is);
 }
 
 bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
