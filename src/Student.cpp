@@ -16,6 +16,12 @@ Student::Student(int u, const string& s, const string& n, const string& e, float
     balance = b;
     isActive = is;
 }
+// Distructor
+Student::~Student() {
+    for (auto res : reservations) {
+        delete res;
+    }
+}
 
 bool Student::reserveMeal(const Meal& meal, const DiningHall& dHall) {
     static int reservationCounter = 1;
@@ -136,7 +142,8 @@ void Student::setIsActive(bool is) {
 
 bool Student::getIsActive() const {
     return isActive;
-}
+}  
+
 
 void Student::print() const {
     cout << "User ID: " << userId << endl

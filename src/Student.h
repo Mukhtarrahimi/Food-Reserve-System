@@ -18,6 +18,7 @@ private:
 public:
     Student();
     Student(int, const string&, const string&, const string&, float, bool);
+    ~Student();
     bool reserveMeal(const Meal&, const DiningHall&);
     bool cancelReservation(int);
 

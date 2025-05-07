@@ -87,3 +87,4 @@ bool Reservation::cancel() {
     cout << "Reservation cancelled successfully." << endl;
     return true;
 }
+   
