@@ -1,5 +1,6 @@
 #include "Panel.h"
 #include <iostream>
+using namespace std;
 
 void Panel::viewReservations() {
     // View reservations logic
@@ -10,5 +11,5 @@ void Panel::showMenu() {
 }
 
 void Panel::exit() {
-    std::cout << "Exiting program." << std::endl;
+    cout << "Exiting program." << endl;
 }
