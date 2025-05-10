@@ -1,5 +1,6 @@
-#ifndef USER_H
-#define USER_H
+// #ifndef USER_H
+// #define USER_H
+#pragma once
 
 #include <string>
 #include <regex>
@@ -28,4 +29,4 @@ public:
     void displayUserInfo() const;
 };
 
-#endif
+// #endif
